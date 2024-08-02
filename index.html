@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" href="profile.png" type="image/x-icon" />
+    <title>OfficialSteam</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-image: url("https://i.pinimg.com/originals/4e/84/17/4e84178c3aac0743db5b17916a7b5bd6.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .overlay {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index: 10;
+      }
+
+      .modal.show {
+        display: flex;
+        opacity: 1;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .modal-content {
+        background: #fff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        max-width: 700px;
+        width: 90%;
+        transform: scale(0.8);
+        transition: transform 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+      }
+
+      .close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+        color: #333;
+        cursor: pointer;
+      }
+
+      .close:hover {
+        color: #000;
+      }
+
+      .content-container {
+        position: relative;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        max-width: 700px;
+        width: 90%;
+      }
+
+      .content-container h1, .content-container p {
+        margin: 0;
+      }
+
+      .social-icons a {
+        font-size: 2rem;
+        margin: 0 15px;
+        color: #333;
+        transition: color 0.3s ease;
+      }
+
+      .social-icons a:hover {
+        color: #555;
+      }
+
+      .link-container a {
+        display: inline-block;
+        margin: 10px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .link-container a:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+      }
+
+      .project-box {
+        position: relative;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+      }
+
+      .project-box:hover {
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        transform: translateY(-5px);
+      }
+
+      .project-box .overlay {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .project-box:hover .overlay {
+        opacity: 1;
+      }
+
+      .project-box-content {
+        position: relative;
+        z-index: 2;
+      }
+
+    </style>
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <div class="flex items-center justify-center min-h-screen">
+      <div class="content-container text-center">
+        <h1 class="text-4xl font-bold">Hey there, I'm Steam</h1>
+        <p class="text-xl">Discord Bot Developer</p>
+        <div class="social-icons mt-4">
+          <a href="https://discord.com/users/704994041653362699" aria-label="Discord Profile"><i class="fab fa-discord"></i></a>
+          <a href="https://github.com/OfficialSteam" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+          <a href="mailto:juststeam9210@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+
+        <div class="link-container mt-4">
+          <a href="#aboutme" id="aboutme-link">About Me</a>
+          <a href="#projects" id="projects-link">Projects</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="aboutme-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="close-aboutme" aria-label="Close">&times;</span>
+        <h2 class="text-3xl font-bold">About Me</h2>
+        <p class="text-lg mt-4">
+          I'm a 16-year-old JavaScript Discord Bot Developer. I love to play
+          Emergency Response: Liberty County, Fortnite, Fallen Survival, and
+          Rainbow Six Siege.
+        </p>
+      </div>
+    </div>
+
+    <div id="projects-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="close-projects" aria-label="Close">&times;</span>
+        <h2 class="text-3xl font-bold">Projects</h2>
+        <div class="grid gap-6 md:grid-cols-2 mt-4">
+          <div class="project-box relative">
+            <div class="overlay"></div>
+            <div class="project-box-content">
+              <h3 class="text-2xl font-semibold mb-3">Texas State Roleplay</h3>
+              <p class="text-gray-700 mb-4">
+                Immersive roleplaying experiences set in the beautiful state of
+                Texas, using the Roblox game Emergency Response: Liberty County!
+              </p>
+              <a
+                href="https://nohello.net"
+                class="block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"
+                >View Website</a
+              >
+              <a
+                href="https://discord.gg/txrp"
+                class="block bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 transition mt-2"
+                >View Discord</a
+              >
+            </div>
+          </div>
+          <div class="project-box relative">
+            <div class="overlay"></div>
+            <div class="project-box-content">
+              <h3 class="text-2xl font-semibold mb-3">Luminary</h3>
+              <p class="text-gray-700 mb-4">
+                Luminary: Elevate your Discord server with streamlined moderation,
+                automoderation for safety, task automation, and detailed logging.
+              </p>
+              <a
+                href="https://sites.google.com/view/cloudsbot/home?authuser=0"
+                class="block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"
+                >View Website</a
+              >
+              <a
+                href="https://discord.gg/W3zhAgNM9n"
+                class="block bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 transition mt-2"
+                >View Discord</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const aboutMeLink = document.getElementById("aboutme-link");
+        const projectsLink = document.getElementById("projects-link");
+        const aboutMeModal = document.getElementById("aboutme-modal");
+        const projectsModal = document.getElementById("projects-modal");
+        const closeAboutMe = document.getElementById("close-aboutme");
+        const closeProjects = document.getElementById("close-projects");
+
+        const openModal = (modal) => {
+          modal.classList.add("show");
+          modal.querySelector(".modal-content").style.transform = "scale(1)";
+        };
+
+        const closeModal = (modal) => {
+          modal.querySelector(".modal-content").style.transform = "scale(0.8)";
+          modal.classList.remove("show");
+        };
+
+        aboutMeLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          openModal(aboutMeModal);
+        });
+
+        projectsLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          openModal(projectsModal);
+        });
+
+        closeAboutMe.addEventListener("click", () => {
+          closeModal(aboutMeModal);
+        });
+
+        closeProjects.addEventListener("click", () => {
+          closeModal(projectsModal);
+        });
+
+        window.addEventListener("click", (e) => {
+          if (e.target === aboutMeModal) {
+            closeModal(aboutMeModal);
+          }
+          if (e.target === projectsModal) {
+            closeModal(projectsModal);
+          }
+        });
+      });
+    </script>
+</body>
+</html>
